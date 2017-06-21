@@ -1,15 +1,13 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <todos v-bind:todos="todos"></todos>
-    <todo-form v-bind:todos="todos"></todo-form>
+
+    <router-view v-bind:todos="todos"></router-view>
   </div>
 </template>
 
 <script>
 import Hello from './components/Hello'
-import Todos from './components/Todos'
-import TodoForm from './components/TodoForm'
 
 export default {
   name: 'app',
@@ -33,7 +31,7 @@ export default {
     }
   },
   components: {
-    Hello,  TodoForm, Todos,
+    Hello
   }
 }
 </script>
