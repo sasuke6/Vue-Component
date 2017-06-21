@@ -16,7 +16,7 @@
                 {{ todo.completed ? 'undo' : 'completed'}}</button>
             </li>
         </ul>
-        <todo-form v-bind:todos="todos"></todo-form>
+        <todo-form></todo-form>
     </div>
 </template>
 
@@ -26,7 +26,11 @@ import TodoForm from './TodoForm'
 
 export default {
     name: 'todos',
-    props:['todos'],
+    computed: {
+        todos () {
+            return this.$store.state.todos
+        }
+    },
 
     methods: {
         deleteTodo(index) {

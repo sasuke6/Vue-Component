@@ -2,7 +2,7 @@
   <div id="app">
     <img src="./assets/logo.png">
 
-    <router-view v-bind:todos="todos"></router-view>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -11,23 +11,12 @@ import Hello from './components/Hello'
 
 export default {
   name: 'app',
-  data() {
-
-    return {
-      todos: [
-          //  ['id' => 1, 'title' => 'Learn Vue js', 'completed' => false],
-        ],
-      }                      
-    },
-    mounted() {
-      this.axios.get('http://laravel.app/todos').then(response => {
-        this.todos = response.data
-        // console.log(response.data)
-      })
-    },
-    computed: {
-        todoCount() {
-            return this.todos.length;
+  mounted() {
+    this.$store.dispatch('getTodos')
+  },
+  computed: {
+    todoCount() {
+        return this.todos.length;
     }
   },
   components: {
